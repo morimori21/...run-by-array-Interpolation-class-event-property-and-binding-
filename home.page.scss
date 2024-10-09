@@ -1,0 +1,59 @@
+:host {
+  .You {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+  }
+
+  .You.disabled {
+    display: none;
+    justify-content: none;
+    align-items: none;
+    height: none;
+  }
+}
+
+.wallpaper {
+  background: url('../../assets/sea.png') no-repeat center center; 
+  background-size: cover; 
+  width: 100%; 
+  height: 100%; 
+}
+
+
+  .mainHome {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+  }
+
+
+.genders {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.darken img {
+  filter: grayscale(100%); 
+  opacity: 0.5; 
+}
+
+ion-card {
+  background-color: black !important;
+  border: solid 4px grey;
+  color: white;
+}
+
+ion-list {
+  color: white;
+  background-color: black;
+}
+
+ion-input{
+  --border-style : solid;
+  --border-color : grey;
+  --border-width : 2px;
+}

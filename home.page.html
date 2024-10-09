@@ -1,0 +1,102 @@
+<ion-content>
+<!-- BACKGROUND -->
+  <div class="wallpaper">
+  
+    <ion-grid>
+      <ion-row class="ion-justify-content">
+        <ion-col size="12">
+      <!-- CREATING THE FISHERMAN IDENTTIFICATION -->
+          <div class="You" [ngClass]="{ 'disabled': isFormSubmitted }">
+            <ion-card *ngIf="createFisher" class="ion-padding">
+            <!-- GENDER SELECTIOM   -->
+              <div *ngIf="gender">
+                <ion-grid>
+                  <ion-title>
+                    <h1 >Select Gender</h1>
+                  </ion-title>
+                  <ion-row>
+                    <ion-col>
+                     <!-- MALE  -->
+                      <div class="genders">
+                        <ion-button expand="block" (click)="selectGender('Male')"
+                          [fill]="fisherInput.gender === 'Male'">
+                          <ion-avatar [ngClass]="{ 'darken': !fisherInput.gender || fisherInput.gender !== 'Male' }">
+                            <img src="../../assets/male.png"/>
+                          </ion-avatar>
+                        </ion-button>
+                      </div>
+                    </ion-col>
+              
+                    <ion-col>
+                      <!-- FEMALE -->
+                      <div class="genders">
+                        <ion-button expand="block" (click)="selectGender('Female')"
+                          [fill]="fisherInput.gender === 'Female'">
+                          <ion-avatar [ngClass]="{ 'darken': !fisherInput.gender || fisherInput.gender !== 'Female' }">
+                            <img src="../../assets/female.png" />
+                          </ion-avatar>
+                        </ion-button>
+                      </div>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+                <!-- SELECTED GENDER -->
+                <ion-button expand="full" (click)="selectedGender()" [disabled]="!fisherInput.gender">Select</ion-button>
+              </div>
+             <!-- NAME OF THE FISHERMAN -->
+              <div *ngIf="username" >
+                <ion-item>
+                  <ion-input placeholder="How will I call you?" [(ngModel)]="fisherInput.username" type="text"
+                    maxlength="6"></ion-input>
+                </ion-item>
+                <ion-button expand="full" (click)="addUserData()" [disabled]="!fisherInput.username" style="margin-top:20px">Enter</ion-button>
+              </div>
+            </ion-card>
+          </div>
+
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <!-- MAIN HOME -->
+          <div class="mainHome" *ngIf="letsGoFishing">
+            <!-- FISHERMAN PROFILE -->
+            <ion-card class="ion-justify-content">
+              <ion-list *ngFor="let user of fisherman" class="ion-padding">
+                <ion-card-content>
+                  <ion-item>
+                    <ion-avatar slot="start">
+                      <img *ngIf="user.gender === 'Male'" src="../../assets/male.png"  />
+                      <img *ngIf="user.gender === 'Female'" src="../../assets/female.png"  />
+                    </ion-avatar>
+                    <ion-text>
+                      Fisherman: {{ user.username }} <br />
+                      Gender: {{ user.gender }}
+                    </ion-text>
+                  </ion-item>
+                </ion-card-content>
+              </ion-list>
+             <!-- CATCH FISH!!!! -->
+              <ion-button expand="full" (click)="catchFish()">Catch a Fish!</ion-button>
+            </ion-card>
+            <div>
+             <!-- ENCYCLOPEDIA - NEW FISH -->
+              <ion-card>
+                <ion-card-title>
+                  <h1 style="text-align: center; color: white">
+                    Fishipedia
+                  </h1>
+                </ion-card-title>
+                <ion-card-content>
+                  <ion-item *ngFor="let fish of fishyDex()">
+                    <ion-text> {{ fish.info }} </ion-text>
+                  </ion-item>
+                </ion-card-content>
+              </ion-card>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
